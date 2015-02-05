@@ -177,6 +177,10 @@ game.States.play = function(){
 
 		var topPipe = game.add.sprite(game.width, topPipeY, 'pipe', 0, this.pipeGroup);
 		var bottomPipe = game.add.sprite(game.width, bottomPipeY, 'pipe', 1, this.pipeGroup);
+
+        game.add.tween(topPipe).to({y:topPipeY-50}, 1000, null, true, 0, Number.MAX_VALUE, true);
+        game.add.tween(bottomPipe).to({y:bottomPipeY+50}, 1000, null, true , 0, Number.MAX_VALUE, true);
+
 		this.pipeGroup.setAll('checkWorldBounds',true);
 		this.pipeGroup.setAll('outOfBoundsKill',true);
 		this.pipeGroup.setAll('body.velocity.x', -this.gameSpeed);
