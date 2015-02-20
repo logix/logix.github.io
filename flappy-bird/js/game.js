@@ -82,6 +82,17 @@ game.States.play = function(){
 		this.soundHitGround = game.add.sound('hit_ground_sound');
 		this.scoreText = game.add.bitmapText(game.world.centerX-20, 30, 'flappy_font', '0', 36);
 
+        this.lang = {
+            0:'人生有很多奇妙的旅程',
+            1:'恭喜不要飞过第一个，不要慌，千万不要紧张',
+            5:'现在才刚刚开始',
+            10:'不要太认真',
+            20:'你怎么还活着啊',
+            30:'你这么厉害，新年一定行大运'
+        };
+		this.langText = game.add.text(20, game.height - 60,  this.lang[0], {font:'bold 12pt Arial',fill:'white'});
+
+
 		this.readyText = game.add.image(game.width/2, 40, 'ready_text'); //get ready 文字
 		this.playTip = game.add.image(game.width/2,300,'play_tip'); //提示点击
 		this.readyText.anchor.setTo(0.5, 0);
@@ -168,7 +179,7 @@ game.States.play = function(){
 	}
 
 	this.generatePipes = function(gap){ //制造管道
-		gap = gap || 100; //上下管道之间的间隙宽度
+		gap = gap || 20 + Math.random()*20; //上下管道之间的间隙宽度
 		var position = (505 - 320 - gap) + Math.floor((505 - 112 - 30 - gap - 505 + 320 + gap) * Math.random());
 		var topPipeY = position-360;
 		var bottomPipeY = position+gap;
@@ -178,8 +189,8 @@ game.States.play = function(){
 		var topPipe = game.add.sprite(game.width, topPipeY, 'pipe', 0, this.pipeGroup);
 		var bottomPipe = game.add.sprite(game.width, bottomPipeY, 'pipe', 1, this.pipeGroup);
 
-        game.add.tween(topPipe).to({y:topPipeY-50}, 1000, null, true, 0, Number.MAX_VALUE, true);
-        game.add.tween(bottomPipe).to({y:bottomPipeY+50}, 1000, null, true , 0, Number.MAX_VALUE, true);
+        game.add.tween(topPipe).to({y:topPipeY-50}, 300, null, true, 0, Number.MAX_VALUE, true);
+        game.add.tween(bottomPipe).to({y:bottomPipeY+50}, 300, null, true , 0, Number.MAX_VALUE, true);
 
 		this.pipeGroup.setAll('checkWorldBounds',true);
 		this.pipeGroup.setAll('outOfBoundsKill',true);
@@ -205,6 +216,7 @@ game.States.play = function(){
 		if(!pipe.hasScored && pipe.y<=0 && pipe.x<=this.bird.x-17-54){
 			pipe.hasScored = true;
 			this.scoreText.text = ++this.score;
+            if(this.lang[this.score]) this.langText.text = this.lang[this.score];
 			this.soundScore.play();
 			return true;
 		}
