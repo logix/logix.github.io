@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta charset="utf-8"/>
+    <title> 右边栏固定的左右分栏布局 </title>
+    <style>
+        html {
+            font-family: verdana, arial, sans-serif;
+            line-height: 120%;
+            height: 2em;
+            padding:0 20px;
+        }
+
+        ul {
+            list-style-type: upper-roman;
+        }
+
+        @-webkit-keyframes anitest {
+            0% {color: green;}
+            50% { color: yellow}
+            100% {color: green}
+        }
+
+
+
+        #headc {
+            background-color: #add8e6;
+            border: 2px solid #a9a9a9;
+            padding: 10px;
+            box-sizing: border-box;
+            border-radius: 4px;
+            box-shadow:3px 3px 4px #0088cc ;
+        }
+
+        #headc h1 {
+            display: inline;
+            -webkit-animation: anitest 2s;
+            -webkit-animation-iteration-count: infinite;
+        }
+
+        #hright {
+            float: right;
+            text-align: right;
+        }
+
+        #leftbox {
+            margin-right: 180px;
+            padding-top: 10px;
+            background-color: #e0ffff;
+            padding-right: 10px;
+        }
+        #rightbox {
+            border-top: 2px solid #00008b;
+            float: right;
+            width: 180px;
+            margin-top: 30px;
+
+        }
+        .clear {
+            clear: both;
+        }
+
+        footer {
+            border-top: 1px solid #a9a9a9;
+            text-align: center;
+        }
+    </style>
+
+
+</head>
+<body>
+<header>
+    <div id="headc" >
+        <h1>Title</h1>
+        <div id="hright">
+            <p>author:xxx</p>
+            <p>job:xxx</p>
+            <p>old:xxx</p>
+        </div>
+        <div class="clear"></div>
+    </div>
+</header>
+<div id="main">
+    <div id="rightbox">
+        <aside>
+            <h2>Rightbox</h2>
+            <ul>
+                <li><a href='#'>menu x</a></li>
+                <li><a href='#'>menu x</a></li>
+                <li><a href='#'>menu x</a></li>
+                <li><a href='#'>menu x</a></li>
+                <li><a href='#'>menu x</a></li>
+                <li><a href='#'>menu x</a></li>
+                <li><a href='#'>menu x</a></li>
+            </ul>
+
+            <ul>
+                <li><a href='#'>menu x</a></li>
+                <li><a href='#'>menu x</a></li>
+                <li><a href='#'>menu x</a></li>
+                <li><a href='#'>menu x</a></li>
+                <li><a href='#'>menu x</a></li>
+                <li><a href='#'>menu x</a></li>
+                <li><a href='#'>menu x</a></li>
+            </ul>
+
+            <ul>
+                <li><a href='#'>menu x</a></li>
+                <li><a href='#'>menu x</a></li>
+                <li><a href='#'>menu x</a></li>
+                <li><a href='#'>menu x</a></li>
+                <li><a href='#'>menu x</a></li>
+                <li><a href='#'>menu x</a></li>
+                <li><a href='#'>menu x</a></li>
+            </ul>
+        </aside>
+    </div>
+
+    <div id="leftbox">
+        <article>
+            <h2>Leftbox</h2>
+            <p>
+                这个页面采用左右布局，固定右边栏宽度，左边栏宽度随窗口伸缩而变化，无论窗口多小，右边栏都不会消失。<br>
+                实现的要点是先写右边栏，固定右边栏宽度，右边栏向右浮动； 后写左边栏，只需指定左边栏的margin-right等于右边栏的宽度。<br>
+                注意几个问题：
+            </p>
+            <ul>
+                <li>无需设定leftbox的宽度，无需设定leftbox的display为inline</li>
+                <li>rightbox要写在leftbox之前</li>
+                <li>inline只针对同级元素</li>
+
+            </ul>
+            <p>
+                This is a demo page about left and right layouts.This is a demo page about left and right layouts.
+                This is a demo page about left and right layouts.This is a demo page about left and right layouts.
+                This is a demo page about left and right layouts.This is a demo page about left and right layouts.
+            </p>
+            <p> This is a demo page about left and right layouts.This is a demo page about left and right layouts.</p>
+            <p> This is a demo page about left and right layouts.This is a demo page about left and right layouts.</p>
+            <p> This is a demo page about left and right layouts.This is a demo page about left and right layouts.</p>
+            <p> This is a demo page about left and right layouts.This is a demo page about left and right layouts.</p>
+            <p> This is a demo page about left and right layouts.This is a demo page about left and right layouts.</p>
+            <p> This is a demo page about left and right layouts.This is a demo page about left and right layouts.</p>
+            <p>
+                This is a demo page about left and right layouts.This is a demo page about left and right layouts.
+                This is a demo page about left and right layouts.This is a demo page about left and right layouts.
+            </p>
+        </article>
+    </div>
+
+    <div class="clear"></div>
+</div>
+<footer>xxxxxxxx</footer>
+
+
+
+</body>
+</html>

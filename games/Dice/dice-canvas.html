@@ -1,0 +1,117 @@
+<!DOCTYPE>
+<html>
+<title>Html5 掷骰子Demo</title>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <script>
+        var leftX = 10;
+        var topY = 100;
+        var diceX = 80;
+        var diceY = 80;
+        var dotR = 6;
+        var count = 0;
+        var lastNum = 0;
+        var gap = diceX  + 20;
+
+        function clickMe() {
+
+            document.getElementById('btn').disabled = true;
+            setTimeout(function(){
+                if(count < 10){
+                    init();
+                    count++;
+                    clickMe();
+                }else{
+                    count=0;
+                    document.getElementById('btn').disabled = false;
+                    return;
+                }
+            }, 100)
+        }
+
+
+        function commonDraw(ctx, dotX, dotY, idx) {
+            var i = idx;
+            ctx.beginPath();
+            ctx.arc(dotX + i * gap, dotY, dotR, 0, 2 * Math.PI, false);
+            ctx.stroke();
+            ctx.fill();
+        }
+
+
+        function drawOneDice(num, i, isClear){
+
+            var ctx = document.getElementById("canvas").getContext('2d');
+            if(isClear) ctx.clearRect(leftX+i*gap,topY,diceX,diceY);
+
+            switch(num){
+                case 1:
+                    ctx.fillStyle = "#0000ff";
+                    var dotX = leftX + diceX / 2 ;
+                    var dotY = topY + diceY / 2;
+                    commonDraw(ctx, dotX, dotY, i);
+                    break;
+                case 2:
+                    ctx.fillStyle = "#99FF66";
+                    var dotX = leftX + 4 * dotR;
+                    var dotY = topY + 4 * dotR;
+                    commonDraw(ctx, dotX, dotY, i);
+                    var dotX = leftX + diceX - 4 * dotR;
+                    var dotY = topY + diceY - 4 * dotR;
+                    commonDraw(ctx, dotX, dotY, i);
+                    break;
+                case 3:
+                    drawOneDice(1,i, false);
+                    drawOneDice(2,i, false);
+                    break;
+                case 4:
+                    drawOneDice(2,i,false);
+                    ctx.fillStyle = "#99CC00";
+                    var dotX = leftX + diceX - 4 * dotR;
+                    var dotY = topY + 4 * dotR;
+                    commonDraw(ctx, dotX, dotY, i);
+                    var dotX = leftX + 4 * dotR;
+                    var dotY = topY + diceY - 4 * dotR;
+                    commonDraw(ctx, dotX, dotY, i);
+                    break;
+                case 5:
+                    drawOneDice(1,i, false);
+                    drawOneDice(4,i, false);
+                    break;
+                case 6:
+                    ctx.fillStyle = "#996633";
+                    var dotX = leftX + 4 * dotR;
+                    var dotY = topY + diceY / 2
+                    commonDraw(ctx, dotX, dotY, i);
+                    var dotX = leftX + diceY - 4 * dotR;
+                    commonDraw(ctx, dotX, dotY, i);
+                    drawOneDice(4,i, false);
+            }
+
+
+
+        }
+
+        function init() {
+            var ctx = document.getElementById("canvas").getContext('2d');
+            for(var i =0 ; i<6; i++){
+                ctx.beginPath();
+                ctx.strokeRect(leftX + i*gap, topY, diceX, diceY);
+                ctx.stroke();
+                var randomNum = Math.floor(Math.random() * 6) + 1;
+                console.log(randomNum);
+                drawOneDice(randomNum,i,true);
+            }
+
+        }
+    </script>
+</head>
+
+<body onload="init();">
+<canvas id="canvas" width="640" height="300" style="background-color:#CCFFCC">
+    your brower is not support html5
+</canvas>
+
+<input type="button" value="掷骰子" onclick="clickMe();" id="btn"/>
+</body>
+</html>
