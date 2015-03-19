@@ -4,8 +4,12 @@
     <meta charset="UTF-8">
     <title>3-column-layout</title>
 
-    <link rel="stylesheet" type="text/css" href="style.css">
+
     <style type="text/css">
+        body {
+            font-family: 'Source Sans Pro', 'Lucida Grande', sans-serif;
+            font-size: 12px;
+        }
         header {
             background: #cb3837;
             width: 100%;
@@ -13,30 +17,78 @@
         }
         .sec1 {
             margin-top: 15px;
-            border: 1px solid #888888;
-            padding-top: 30px;
-        }
-        .plist {
+            border-top: 1px solid #888888;
+            padding: 30px 10%;
 
         }
+
+        .plist li{
+            display: inline;
+            list-style: none;
+            float: left;
+            width: 31%;
+            box-sizing: border-box;
+            text-align: center;
+            margin: 20px 10px;
+
+        }
+        .plist li a img{
+            max-height: 120px;
+            opacity: 0.2;
+            transition: 0.2s linear;
+            -webkit-transition: 0.2s linear;
+            -o-transition: 0.2s linear;
+            -moz-transition: 0.2s linear;
+        }
+
+        .plist li a img:hover {
+            opacity: 1;
+            transform: scale(1.2);
+            -webkit-transform: scale(1.2);
+            -o-transform: scale(1.2);
+            -moz-transform: scale(1.2);
+        }
     </style>
-    <script src="jquery-2.1.1.min.js"></script>
+
 </head>
 <body>
    <header></header>
     <div class="sec1">
         <ul class="plist">
             <li>
-                <img src="0286W-2y27.png">
+                <a href="#">
+                    <img src="0286W-2y27.png">
+                </a>
+                <h3>karma</h3>
+                <p>Spectacular Test Runner for JavaScript.</p>
+                <P> 0.12.31 published 2 months ago by karmarunnerbot</P>
             </li>
             <li>
-                <img src="bDkmXyEmr5.png">
+                <a href="#">
+                    <img src="bDkmXyEmr5.png">
+                </a>
+                    <h3>karma</h3>
+                    <p>Spectacular Test Runner for JavaScript.</p>
+                    <P> 0.12.31 published 2 months ago by karmarunnerbot</P>
+
             </li>
             <li>
-                <img src="browserify-2-hexagon-sticker.png">
+                <a href="#">
+                    <img src="browserify-2-hexagon-sticker.png">
+                </a>
+                    <h3>karma</h3>
+                    <p>Spectacular Test Runner for JavaScript.</p>
+                    <P> 0.12.31 published 2 months ago by karmarunnerbot</P>
+
             </li>
             <li>
-                <img src="PKpktytKH9.png">
+                <a href="#">
+                    <img src="PKpktytKH9.png">
+                </a>
+                    <h3>karma</h3>
+                    <p>Spectacular Test Runner for JavaScript.</p>
+                    <P> 0.12.31 published 2 months ago by karmarunnerbot</P>
+
             </li>
         </ul>
     </div>
